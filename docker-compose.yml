@@ -1,0 +1,31 @@
+services:
+
+  backend:
+    build:
+      context: .                          # root — so requirements.txt is accessible
+      dockerfile: backend/Dockerfile
+    container_name: aquasense_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/models:/app/models:ro   # hot-swap models without rebuild
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: aquasense_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
