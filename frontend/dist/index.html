@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Water Quality Monitoring System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="/assets/index-BVPTjDZi.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BckyVZdC.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo" aria-label="Water Quality AI Home">
+        <span class="logo-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M14 2C14 2 6 10 6 16a8 8 0 0016 0C22 10 14 2 14 2z" fill="url(#logoGrad)"/>
+            <circle cx="14" cy="16" r="3" fill="rgba(255,255,255,0.6)"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="14" y1="2" x2="14" y2="26" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#38bdf8"/>
+                <stop offset="100%" stop-color="#0ea5e9"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="logo-text">Water Quality <span class="logo-ai">AI</span></span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#monitor" class="nav-link">Monitor</a></li>
+        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <ul role="list">
+        <li><a href="#home" class="mobile-link">Home</a></li>
+        <li><a href="#monitor" class="mobile-link">Monitor</a></li>
+        <li><a href="#how-it-works" class="mobile-link">How It Works</a></li>
+        <li><a href="#about" class="mobile-link">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home" aria-label="Hero section">
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="hero-content">
+      <div class="hero-badge" aria-label="AI Powered">
+        <span class="badge-dot" aria-hidden="true"></span>
+        AI-Powered Environmental Intelligence
+      </div>
+      <h1 class="hero-title">
+        Monitor.<br/>Predict.<br/><span class="hero-accent">Protect.</span>
+      </h1>
+      <p class="hero-subtitle">
+        AI-powered water quality monitoring and prediction for smarter environmental decisions.
+      </p>
+      <p class="hero-desc">
+        The system analyzes 14 water-quality parameters using a trained Random Forest machine learning model to classify water quality in real time.
+      </p>
+      <div class="hero-cta">
+        <a href="#monitor" class="btn btn-primary">
+          <span>Start Monitoring</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
+      </div>
+      <div class="hero-stats" aria-label="System statistics">
+        <div class="hero-stat"><span class="stat-num">14</span><span class="stat-label">Parameters</span></div>
+        <div class="hero-stat-divider" aria-hidden="true"></div>
+        <div class="hero-stat"><span class="stat-num">3</span><span class="stat-label">Quality Classes</span></div>
+        <div class="hero-stat-divider" aria-hidden="true"></div>
+        <div class="hero-stat"><span class="stat-num">RF</span><span class="stat-label">ML Model</span></div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- MONITOR SECTION -->
+  <section class="monitor-section" id="monitor" aria-label="Water quality prediction">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Prediction Engine</span>
+        <h2 class="section-title">Water Quality Prediction</h2>
+        <p class="section-desc">Enter the latest water parameters and let the AI model evaluate the water condition.</p>
+      </div>
+
+      <div class="monitor-layout">
+        <!-- FORM -->
+        <div class="form-card reveal">
+          <form id="predictionForm" novalidate aria-label="Water quality prediction form">
+
+            <!-- Water Flow -->
+            <fieldset class="form-group">
+              <legend class="group-legend">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M2 8c2-4 4-4 6 0s4 4 6 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                Water Flow
+              </legend>
+              <div class="form-grid">
+                <div class="input-wrap">
+                  <label for="avgSpeed" class="input-label">Average Water Speed <span class="unit">m/s</span></label>
+                  <input type="number" id="avgSpeed" name="Average Water Speed" class="input-field" placeholder="e.g. 0.35" step="0.01" min="0" required aria-required="true" />
+                  <span class="input-error" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="input-wrap">
+                  <label for="avgDir" class="input-label">Average Water Direction <span class="unit">°</span></label>
+                  <input type="number" id="avgDir" name="Average Water Direction" class="input-field" placeholder="e.g. 180" step="0.1" min="0" max="360" required aria-required="true" />
+                  <span class="input-error" role="alert" aria-live="polite"></span>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Water Chemistry -->
+            <fieldset class="form-group">
+              <legend class="group-legend">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M8 2v8M5 7l3 3 3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Water Chemistry
+              </legend>
+              <div class="form-grid">
+                <div class="input-wrap">
+                  <label for="chlorophyll" class="input-label">Chlorophyll <span class="unit">μg/L</span></label>
+                  <input type="number" id="chlorophyll" name="Chlorophyll" class="input-field" placeholder="e.g. 3.2" step="0.01" min="0" required aria-required="true" />
+                  <span class="input-error" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="input-wrap">
+                  <label for="temperature" class="input-label">Temperature <span class="unit">°C</span></label>
+                  <input type="number" id="temperature" name="Temperature" class="input-field" placeholder="e.g. 25.4" step="0.1" required aria-required="true" />
+                  <span class="input-error" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="input-wrap">
+                  <label for="dissolvedO2" class="input-label">Dissolved Oxygen <span class="unit">mg/L</span></label>
+                  <input type="number" id="dissolvedO2" name="Dissolved Oxygen" class="input-field" placeholder="e.g. 8.4" step="0.01" min="0" required aria-required="true" />
+                  <span class="input-error" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="input-wrap">
+                  <label for="dissolvedO2Sat" class="input-label">DO % Saturation <span class="unit">%</span></label>
+                  <input type="number" id="dissolvedO2Sat" name="Dissolved Oxygen (%Saturation)" class="input-field" placeholder="e.g. 95.0" step="0.1" min="0" max="200" required aria-required="true" />
+                  <span class="input-error" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="input-wrap">
+                  <label for="ph" class="input-label">pH <span class="unit">0–14</span></label>
+                  <input type="number" id="ph" name="pH" class="input-field" placeholder="e.g. 7.2" step="0.01" min="0" max="14" required aria-required="true" />
+                  <span class="input-error" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="input-wrap">
+                  <label for="salinity" class="input-label">Salinity <span class="unit">PSU</span></label>
+                  <input type="number" id="salinity" name="Salinity" class="input-field" placeholder="e.g. 0.5" step="0.01" min="0" required aria-required="true" />
+                  <span class="input-error" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="input-wrap">
+                  <label for="turbidity" class="input-label">Turbidity <span class="unit">NTU</span></label>
+                  <input type="number" id="turbidity" name="Turbidity" class="input-field" placeholder="e.g. 2.3" step="0.01" min="0" required aria-required="true" />
+                  <span class="input-error" role="alert" aria-live="polite"></span>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Time Information -->
+            <fieldset class="form-group">
+              <legend class="group-legend">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M8 5v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                Time Information
+              </legend>
+              <div class="form-grid">
+                <div class="input-wrap">
+                  <label for="year" class="input-label">Year</label>
+                  <input type="number" id="year" name="Year" class="input-field" placeholder="e.g. 2024" min="2000" max="2100" step="1" required aria-required="true" />
+                  <span class="input-error" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="input-wrap">
+                  <label for="month" class="input-label">Month <span class="unit">1–12</span></label>
+                  <input type="number" id="month" name="Month" class="input-field" placeholder="e.g. 6" min="1" max="12" step="1" required aria-required="true" />
+                  <span class="input-error" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="input-wrap">
+                  <label for="day" class="input-label">Day <span class="unit">1–31</span></label>
+                  <input type="number" id="day" name="Day" class="input-field" placeholder="e.g. 15" min="1" max="31" step="1" required aria-required="true" />
+                  <span class="input-error" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="input-wrap">
+                  <label for="hour" class="input-label">Hour <span class="unit">0–23</span></label>
+                  <input type="number" id="hour" name="Hour" class="input-field" placeholder="e.g. 12" min="0" max="23" step="1" required aria-required="true" />
+                  <span class="input-error" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="input-wrap">
+                  <label for="dayOfWeek" class="input-label">Day of Week <span class="unit">0=Mon</span></label>
+                  <input type="number" id="dayOfWeek" name="DayOfWeek" class="input-field" placeholder="e.g. 1" min="0" max="6" step="1" required aria-required="true" />
+                  <span class="input-error" role="alert" aria-live="polite"></span>
+                </div>
+              </div>
+            </fieldset>
+
+            <button type="submit" class="btn-predict" id="predictBtn" aria-label="Predict water quality">
+              <span class="btn-predict-text">Predict Water Quality</span>
+              <span class="btn-predict-loader" aria-hidden="true">
+                <svg class="spinner" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-dasharray="31.4" stroke-dashoffset="10"/>
+                </svg>
+                Analyzing Water Quality...
+              </span>
+            </button>
+          </form>
+        </div>
+
+        <!-- RESULTS PANEL -->
+        <div class="results-panel" id="resultsPanel" aria-live="polite" aria-label="Prediction results">
+
+          <!-- AI Processing Animation -->
+          <div class="ai-processing" id="aiProcessing" aria-hidden="true">
+            <div class="ai-network">
+              <svg class="ai-svg" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+                <line class="ai-line" x1="100" y1="30" x2="40" y2="90"/>
+                <line class="ai-line" x1="100" y1="30" x2="100" y2="90"/>
+                <line class="ai-line" x1="100" y1="30" x2="160" y2="90"/>
+                <line class="ai-line" x1="40" y1="90" x2="100" y2="170"/>
+                <line class="ai-line" x1="100" y1="90" x2="100" y2="170"/>
+                <line class="ai-line" x1="160" y1="90" x2="100" y2="170"/>
+                <circle class="ai-node" cx="100" cy="30" r="10"/>
+                <circle class="ai-node ai-node--delay1" cx="40" cy="90" r="8"/>
+                <circle class="ai-node ai-node--delay2" cx="100" cy="90" r="8"/>
+                <circle class="ai-node ai-node--delay3" cx="160" cy="90" r="8"/>
+                <circle class="ai-node ai-node--delay4" cx="100" cy="170" r="10"/>
+              </svg>
+            </div>
+            <p class="ai-status" id="aiStatus">Analyzing water parameters...</p>
+          </div>
+
+          <!-- Result Card -->
+          <div class="result-card" id="resultCard" aria-label="Prediction result">
+            <div class="result-header">
+              <span class="result-label">Water Quality Status</span>
+              <div class="result-icon" id="resultIcon" aria-hidden="true"></div>
+            </div>
+            <div class="result-status" id="resultStatus"></div>
+            <p class="result-message" id="resultMessage"></p>
+
+            <!-- Confidence Bars -->
+            <div class="confidence-section" id="confidenceSection">
+              <h3 class="confidence-title">Prediction Confidence</h3>
+              <div class="confidence-bars" id="confidenceBars"></div>
+            </div>
+          </div>
+
+          <!-- Parameter Cards -->
+          <div class="param-cards" id="paramCards" aria-label="Entered parameters summary">
+            <h3 class="param-cards-title">Parameter Summary</h3>
+            <div class="param-grid" id="paramGrid"></div>
+          </div>
+
+          <!-- Error Card -->
+          <div class="error-card" id="errorCard" role="alert" aria-live="assertive">
+            <div class="error-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="error-title">Prediction Failed</p>
+              <p class="error-message" id="errorMessage"></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section" id="how-it-works" aria-label="How it works">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Process</span>
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-desc">A four-step pipeline from raw sensor data to actionable water quality insights.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal" aria-label="Step 1: Collect">
+          <div class="step-num" aria-hidden="true">01</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <path d="M24 14v10l6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="step-title">Collect</h3>
+          <p class="step-desc">Water-quality parameters are collected from environmental monitoring sensors and data sources.</p>
+        </div>
+        <div class="step-card reveal" aria-label="Step 2: Analyze">
+          <div class="step-num" aria-hidden="true">02</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <rect x="8" y="28" width="6" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="18" y="20" width="6" height="20" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="28" y="14" width="6" height="26" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="38" y="8" width="6" height="32" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M8 24l10-8 10 4 10-12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="step-title">Analyze</h3>
+          <p class="step-desc">The system processes and normalizes the 14 water-quality parameters for model input.</p>
+        </div>
+        <div class="step-card reveal" aria-label="Step 3: Predict">
+          <div class="step-num" aria-hidden="true">03</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <circle cx="24" cy="24" r="3" fill="currentColor"/>
+              <path d="M24 10V6M24 42v-4M10 24H6M42 24h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="step-title">Predict</h3>
+          <p class="step-desc">The Random Forest machine-learning model evaluates the data and classifies water quality.</p>
+        </div>
+        <div class="step-card reveal" aria-label="Step 4: Monitor">
+          <div class="step-num" aria-hidden="true">04</div>
+          <div class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <rect x="6" y="10" width="36" height="24" rx="3" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M16 38h16M24 34v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M14 22l5 4 5-6 5 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="step-title">Monitor</h3>
+          <p class="step-desc">The system displays the predicted water-quality condition with confidence scores and parameter summaries.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ML MODEL SECTION -->
+  <section class="model-section" id="model" aria-label="Machine learning model information">
+    <div class="container">
+      <div class="model-inner reveal">
+        <div class="model-text">
+          <span class="section-tag">Technology</span>
+          <h2 class="section-title">Powered by Machine Learning</h2>
+          <p class="section-desc">The system uses a <strong>Random Forest Classifier</strong> trained on historical water-quality data to deliver accurate, real-time predictions across three quality classes.</p>
+          <div class="model-badge">
+            <div class="model-badge-icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="8" cy="28" r="4" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="32" cy="28" r="4" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M20 12v6M12 26l6-6M28 26l-6-6M8 32h24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="model-badge-title">Random Forest</p>
+              <p class="model-badge-sub">Machine Learning Model</p>
+            </div>
+          </div>
+        </div>
+        <div class="model-stats">
+          <div class="model-stat-card reveal">
+            <span class="model-stat-num" data-target="3">0</span>
+            <span class="model-stat-label">Prediction Classes</span>
+          </div>
+          <div class="model-stat-card reveal">
+            <span class="model-stat-num" data-target="14">0</span>
+            <span class="model-stat-label">Input Parameters</span>
+          </div>
+          <div class="model-stat-card model-stat-card--wide reveal">
+            <div class="quality-pills">
+              <span class="quality-pill quality-pill--good">Good</span>
+              <span class="quality-pill quality-pill--moderate">Moderate</span>
+              <span class="quality-pill quality-pill--poor">Poor</span>
+            </div>
+            <span class="model-stat-label">Output Classes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about" aria-label="About the system">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-text reveal">
+          <span class="section-tag">About</span>
+          <h2 class="section-title">About the System</h2>
+          <p class="section-desc">
+            This is an AI/ML-based water quality monitoring application developed as a college AIML project. The system analyzes multiple environmental parameters and predicts water quality using a trained machine learning model.
+          </p>
+          <p class="section-desc">
+            By combining real-world sensor data with a Random Forest classifier, the system provides actionable water quality assessments classified as <strong class="text-good">Good</strong>, <strong class="text-moderate">Moderate</strong>, or <strong class="text-poor">Poor</strong>.
+          </p>
+          <div class="about-tags" aria-label="Technologies used">
+            <span class="tag">Random Forest</span>
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Environmental AI</span>
+          </div>
+        </div>
+        <div class="about-visual reveal" aria-hidden="true">
+          <div class="about-ring">
+            <div class="about-ring-inner">
+              <svg viewBox="0 0 80 80" fill="none" class="about-icon">
+                <path d="M40 8C40 8 20 26 20 42a20 20 0 0040 0C60 26 40 8 40 8z" fill="url(#aboutGrad)" opacity="0.9"/>
+                <circle cx="40" cy="42" r="8" fill="rgba(255,255,255,0.3)"/>
+                <circle cx="40" cy="42" r="3" fill="white"/>
+                <defs>
+                  <linearGradient id="aboutGrad" x1="40" y1="8" x2="40" y2="66" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#38bdf8"/>
+                    <stop offset="100%" stop-color="#0284c7"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="footer-logo">
+            <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+              <path d="M14 2C14 2 6 10 6 16a8 8 0 0016 0C22 10 14 2 14 2z" fill="url(#footerGrad)"/>
+              <circle cx="14" cy="16" r="3" fill="rgba(255,255,255,0.5)"/>
+              <defs>
+                <linearGradient id="footerGrad" x1="14" y1="2" x2="14" y2="26" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#38bdf8"/>
+                  <stop offset="100%" stop-color="#0ea5e9"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+          <div>
+            <p class="footer-name">Water Quality Monitoring System</p>
+            <p class="footer-sub">AI/ML Project</p>
+          </div>
+        </div>
+        <p class="footer-copy">&copy; 2026 Water Quality Monitoring System</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
